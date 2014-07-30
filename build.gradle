@@ -1,0 +1,93 @@
+apply plugin: 'war'
+apply plugin: 'pmd'
+apply plugin: 'sonar'
+apply plugin: 'eclipse-wtp'
+apply from: "https://launchpad.net/gradle-release/trunk/1.0pre/+download/apply.groovy"
+
+group = 'net.gauvins'
+description = 'This is a test Spring MVC project'
+
+defaultTasks 'clean', 'build'
+
+eclipse.classpath.downloadSources = true
+
+
+
+repositories {
+  mavenCentral()
+}
+
+task "create-dirs" << {
+   sourceSets*.java.srcDirs*.each { it.mkdirs() }
+   sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+   webAppDir.mkdirs()
+}
+
+task generateProject {
+}
+
+generateProject.dependsOn 'create-dirs', 'cleanEclipse', 'eclipse'
+release.dependsOn 'clean'
+updateVersion.dependsOn 'sonarAnalyze'
+pmdTest.enabled = false
+
+configurations {
+  compile.exclude module: 'commons-logging'
+}
+
+def springVersion = '3.2.2.RELEASE'
+
+List spring = ['org.springframework:spring-context:' + springVersion,
+    'org.springframework:spring-aspects:' + springVersion,
+    'org.springframework:spring-webmvc:' + springVersion,
+    'org.springframework:spring-beans:' + springVersion]
+List springTest = ['org.springframework:spring-test:' + springVersion]
+List tiles = ['org.apache.tiles:tiles-api:2.1+',
+    'org.apache.tiles:tiles-core:2.2.+',
+    'org.apache.tiles:tiles-jsp:2.2.+',
+    'org.apache.tiles:tiles-el:2.2.+',
+    'org.apache.tiles:tiles-servlet:2.2.+']
+
+List logging = ['org.slf4j:jcl-over-slf4j:1.6.+', 'ch.qos.logback:logback-classic:1.0.+']
+
+List javaee = ['javax.validation:validation-api:1.0.+',
+  'javax.servlet:javax.servlet-api:3.0.+',
+  'javax.servlet.jsp:javax.servlet.jsp-api:2.2.+'
+  ]
+
+dependencies {
+  configurations.compile.dependencies.each { d -> 
+    dep.artifact {
+      group = dep.group
+      name = dep.name
+      version = dep.version
+      classifier = 'sources'
+      type = 'jar'
+    }
+  }
+
+  compile spring, logging, tiles
+  providedCompile javaee
+
+  compile 'joda-time:joda-time:2.+'
+  compile 'org.aspectj:aspectjrt:1.+'
+  compile 'org.aspectj:aspectjweaver:1.+'
+  compile 'cglib:cglib:2.+'
+  compile 'org.hibernate:hibernate-validator:4.+'
+  compile 'org.codehaus.jackson:jackson-mapper-asl:1.+'
+  compile 'jstl:jstl:1.2'
+
+  compile("net.sf.ehcache:ehcache-core:2.+") {
+    exclude module: 'slf4j-api'
+  }
+
+  compile("org.reflections:reflections:0.9.5") {
+    exclude module: 'slf4j-api'
+    exclude module: 'dom4j'
+  }    
+
+  testCompile 'junit:junit:4.+'
+  testCompile 'org.mockito:mockito-core:1.+'
+  testCompile springTest
+}
+

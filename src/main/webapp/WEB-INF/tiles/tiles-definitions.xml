@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+  <definition name=".base.template" template="/WEB-INF/jsp/base-template.jsp">
+    <put-attribute name="title" value=""/>
+    <put-attribute name="script" value="/WEB-INF/jsp/empty.jsp" />
+    <put-attribute name="body" value="" />
+  </definition>
+
+  <definition name=".signin" extends=".base.template">
+    <put-attribute name="title" value="Sign In"/>
+    <put-attribute name="script" value="/WEB-INF/views/signin/script.jsp" />
+    <put-attribute name="body" value="/WEB-INF/views/signin/body.jsp" />
+  </definition>
+
+  <definition name=".payment" extends=".base.template">
+    <put-attribute name="title" value="Payment"/>
+    <put-attribute name="body" value="/WEB-INF/views/payment/body.jsp" />
+  </definition>
+
+  <definition name=".loggedin" extends=".base.template" >
+    <put-attribute name="title" value="Logged in"/>
+    <put-attribute name="body" expression="${text}" />
+  </definition>
+</tiles-definitions>
