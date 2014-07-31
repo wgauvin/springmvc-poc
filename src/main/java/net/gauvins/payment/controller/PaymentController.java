@@ -1,8 +1,9 @@
-package net.gauvins.controller;
+package net.gauvins.payment.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import net.gauvins.controller.NonceHandler;
 import net.gauvins.model.Payment;
 
 import org.joda.time.LocalDate;
