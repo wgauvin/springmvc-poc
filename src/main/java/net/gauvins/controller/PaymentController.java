@@ -52,8 +52,13 @@ public class PaymentController {
     return nonceHandler.getNonce();
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/payment.do")
+  @RequestMapping(method = RequestMethod.GET, value = "/payment")
   public String get() {
+    return ".payment";
+  }
+
+  @RequestMapping(method = RequestMethod.POST, value = "/payment")
+  public String post() {
     return ".payment";
   }
 

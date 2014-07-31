@@ -25,4 +25,10 @@
     <put-attribute name="title" value="Logged in"/>
     <put-attribute name="body" expression="${text}" />
   </definition>
+
+  <definition name=".helloworld" extends=".base.template" >
+    <put-attribute name="title" value="Hello World"/>
+    <put-attribute name="body" value="/WEB-INF/views/helloworld/helloworld.jsp" />
+  </definition>
+
 </tiles-definitions>

@@ -11,4 +11,7 @@
   <legend>Card Details</legend> 
   <ui:creditcard field="creditCard" />
 </div>
+ <ui:formActions>
+   <ui:submit label="Log In"/>
+ </ui:formActions>
 </ui:form>

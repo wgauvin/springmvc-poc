@@ -55,18 +55,18 @@ public class LoginController {
     return nonceHandler.getNonce();
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/signin.do")
+  @RequestMapping(method = RequestMethod.GET, value = "/signin")
   public String get() {
     return ".signin";
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/loggedin.do")
+  @RequestMapping(method = RequestMethod.GET, value = "/loggedin")
   public String loggedin(final ModelMap model) {
     model.addAttribute("text", "You're logged in");
     return ".loggedin";
   }
 
-  @RequestMapping(method = RequestMethod.POST, value = "/signin.do")
+  @RequestMapping(method = RequestMethod.POST, value = "/signin")
   public @ResponseBody LoginResponse login(@RequestBody final LoginRequest loginRequest, final HttpServletRequest request) {
     LOGGER.debug("In login");
     final LoginResponse response;
