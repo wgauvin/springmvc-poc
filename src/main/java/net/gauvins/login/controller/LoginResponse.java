@@ -1,4 +1,7 @@
-package net.gauvins.controller;
+package net.gauvins.login.controller;
+
+import net.gauvins.controller.HasResponseStatus;
+import net.gauvins.controller.ResponseStatus;
 
 public class LoginResponse implements HasResponseStatus {
 

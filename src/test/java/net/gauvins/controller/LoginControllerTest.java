@@ -1,7 +1,8 @@
 package net.gauvins.controller;
 
 import static org.junit.Assert.assertEquals;
-import net.gauvins.service.LoginService;
+import net.gauvins.login.controller.LoginController;
+import net.gauvins.login.service.LoginService;
 
 import org.junit.Before;
 import org.junit.Test;

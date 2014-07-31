@@ -1,4 +1,6 @@
-package net.gauvins.controller;
+package net.gauvins.login.controller;
+
+import net.gauvins.controller.HasNonce;
 
 public class LoginRequest implements HasNonce {
   private String username;

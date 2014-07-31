@@ -1,13 +1,15 @@
-package net.gauvins.controller;
+package net.gauvins.login.controller;
 
 import java.util.EnumMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.gauvins.controller.NonceHandler;
+import net.gauvins.controller.ResponseStatus;
+import net.gauvins.login.service.LoginService;
+import net.gauvins.login.service.LoginService.Status;
 import net.gauvins.model.Credentials;
-import net.gauvins.service.LoginService;
-import net.gauvins.service.LoginService.Status;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package net.gauvins.service;
+package net.gauvins.login.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
