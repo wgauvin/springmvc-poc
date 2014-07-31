@@ -21,6 +21,11 @@
     <put-attribute name="body" value="/WEB-INF/views/payment/body.jsp" />
   </definition>
 
+  <definition name=".paymentsuccess" extends=".base.template">
+    <put-attribute name="title" value="Payment"/>
+    <put-attribute name="body" value="/WEB-INF/views/payment/payment-success.jsp" />
+  </definition>
+
   <definition name=".loggedin" extends=".base.template" >
     <put-attribute name="title" value="Logged in"/>
     <put-attribute name="body" expression="${text}" />

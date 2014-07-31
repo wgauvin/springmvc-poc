@@ -2,7 +2,7 @@ package net.gauvins.controller;
 
 import static org.junit.Assert.assertEquals;
 import net.gauvins.login.controller.LoginController;
-import net.gauvins.login.service.LoginService;
+import net.gauvins.login.service.LoginServiceImpl;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +17,7 @@ public class LoginControllerTest {
   LoginController controller;
 
   @Mock
-  LoginService loginService;
+  LoginServiceImpl loginService;
 
   @Mock
   NonceHandler nonceHandler;

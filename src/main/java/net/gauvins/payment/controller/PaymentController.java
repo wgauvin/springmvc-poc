@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.gauvins.controller.NonceHandler;
-import net.gauvins.model.Payment;
+import net.gauvins.payment.model.Payment;
+import net.gauvins.payment.service.PaymentService;
 
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class PaymentController {
 
+  private final NonceHandler nonceHandler;
+  private final PaymentService paymentService;
+
   @Autowired
-  private NonceHandler nonceHandler;
+  public PaymentController(final PaymentService paymentService, final NonceHandler nonceHandler) {
+    this.paymentService = paymentService;
+    this.nonceHandler = nonceHandler;
+  }
 
   @ModelAttribute("payment")
   public Payment getPayment() {
@@ -59,8 +66,9 @@ public class PaymentController {
   }
 
   @RequestMapping(method = RequestMethod.POST, value = "/payment")
-  public String post() {
-    return ".payment";
+  public String post(final Payment payment) {
+    paymentService.processPayment(payment);
+    return ".paymentsuccess";
   }
 
 }

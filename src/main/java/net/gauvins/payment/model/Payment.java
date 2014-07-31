@@ -1,6 +1,8 @@
-package net.gauvins.model;
+package net.gauvins.payment.model;
 
 import java.math.BigDecimal;
+
+import net.gauvins.model.CreditCard;
 
 public class Payment {
 

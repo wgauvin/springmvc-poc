@@ -12,6 +12,6 @@
   <ui:creditcard field="creditCard" />
 </div>
  <ui:formActions>
-   <ui:submit label="Log In"/>
+   <ui:submit label="Make a Payment"/>
  </ui:formActions>
 </ui:form>

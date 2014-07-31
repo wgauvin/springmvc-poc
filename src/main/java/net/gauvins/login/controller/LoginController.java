@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import net.gauvins.controller.NonceHandler;
 import net.gauvins.controller.ResponseStatus;
-import net.gauvins.login.service.LoginService;
 import net.gauvins.login.service.LoginService.Status;
+import net.gauvins.login.service.LoginServiceImpl;
 import net.gauvins.model.Credentials;
 
 import org.slf4j.Logger;
@@ -32,13 +32,13 @@ public class LoginController {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
-  private final LoginService loginService;
+  private final LoginServiceImpl loginService;
   private final NonceHandler nonceHandler;
 
   private final Map<Status, LoginStatusHandler> loginStatusHandlers = new EnumMap<>(Status.class);
 
   @Autowired
-  public LoginController(final LoginService loginService, final NonceHandler nonceHandler) {
+  public LoginController(final LoginServiceImpl loginService, final NonceHandler nonceHandler) {
     this.loginService = loginService;
     this.nonceHandler = nonceHandler;
 
