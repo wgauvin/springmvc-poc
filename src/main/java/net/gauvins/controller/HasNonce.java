@@ -8,5 +8,6 @@ package net.gauvins.controller;
 public interface HasNonce {
   String getNonce();
 
+  // comment
   void setNonce(String nonce);
 }
